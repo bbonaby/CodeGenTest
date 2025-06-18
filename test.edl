@@ -1,0 +1,48 @@
+enclave
+{
+    struct TestStruct1
+    {
+        int64_t int64_val;
+        uint64_t uint64_val;
+        int64_t array1[5];
+    };
+
+    struct NestedStructWithPointers
+    {
+        int32_t* int32_ptr;
+        TestStruct1* struct_ptr;
+    };
+
+    struct StructWithPointers
+    {
+        NestedStructWithPointers* nested_struct_ptr;
+    };
+
+	trusted
+	{
+		HRESULT TestFunc(
+            bool arg1,
+			[in] uint32_t* arg2,
+			[in, out] int32_t* arg3,
+            [out] uint64_t* arg4,
+			[in, out] StructWithPointers arg5,
+            [out] StructWithPointers* arg6,
+            [in, out] vector<StructWithPointers> arg7,
+            [out] vector<int16_t> arg8,
+            [out] wstring arg9[2]);
+	};
+
+	untrusted
+	{
+        HRESULT TestFunc(
+            bool arg1,
+			[in] uint32_t* arg2,
+			[in, out] int32_t* arg3,
+            [out] uint64_t* arg4,
+			[in, out] StructWithPointers arg5,
+            [out] StructWithPointers* arg6,
+            [in, out] vector<StructWithPointers> arg7,
+            [out] vector<int16_t> arg8,
+            [out] wstring arg9[2]);
+	};
+};

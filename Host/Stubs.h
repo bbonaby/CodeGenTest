@@ -87,31 +87,14 @@ namespace CodeGenTest
             THROW_IF_FAILED((CallVtl1ExportFromVtl0<ReturnParamsT>(m_enclave, "TestFunc0_Generated_Stub", flatbuffer_builder, function_result)));
             
             auto return_params = ConvertStruct<TestFunc0_args>(function_result);
-                 
-            if (arg3 && return_params.m_arg3)
-            {
-                *arg3 = *return_params.m_arg3;
-            }
-     
-            if (return_params.m_arg4)
-            {
-                arg4 = std::move(return_params.m_arg4);
-            }
-     
-            arg5 = std::move(return_params.m_arg5);
-     
-            if (return_params.m_arg6)
-            {
-                arg6 = std::move(return_params.m_arg6);
-            }
-     
-            arg7 = std::move(return_params.m_arg7);
-     
-            arg8 = std::move(return_params.m_arg8);
-     
-            arg9 = std::move(return_params.m_arg9);
-             
-            return return_params.m__return_value_;
+            UpdateParameterValue(return_params.m_arg3, arg3);
+            UpdateParameterValue(return_params.m_arg4, arg4);
+            UpdateParameterValue(return_params.m_arg5, arg5);
+            UpdateParameterValue(return_params.m_arg6, arg6);
+            UpdateParameterValue(return_params.m_arg7, arg7);
+            UpdateParameterValue(return_params.m_arg8, arg8);
+            UpdateParameterValue(return_params.m_arg9, arg9);
+            return std::move(return_params.m__return_value_);
 
         }
 

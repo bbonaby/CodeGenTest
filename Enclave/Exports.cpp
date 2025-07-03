@@ -2,20 +2,20 @@
 // Changes to this file may be lost if the file is regenerated.
 
 #pragma once
-#include "CodeGenTest_StubsForExports.h"
+#include <VbsEnclave\Enclave\AbiDefinitions.h>
 
 // Explicitly add linker statements so the generated export functions created by the code generator 
 // can be exported when used to create a static lib.
-#pragma comment(linker, "/include:TestFunc0_Generated_Stub")
+#pragma comment(linker, "/include:TestFunc_0_Generated_Stub")
 #pragma comment(linker, "/include:__AbiRegisterVtl0Callbacks_CodeGenTest__")
 
-extern "C" __declspec(dllexport) void* TestFunc0_Generated_Stub(void* function_context) 
+extern "C" __declspec(dllexport) void* TestFunc_0_Generated_Stub(void* function_context) 
 {
-    return CodeGenTest::VTL1_Stubs::TestFunc0_Generated_Stub(function_context);
+    return CodeGenTest::AbiDefinitions::TestFunc_0_Generated_Stub(function_context);
 }
 
 extern "C" __declspec(dllexport) void* __AbiRegisterVtl0Callbacks_CodeGenTest__(void* function_context) 
 {
-    return CodeGenTest::VTL1_Stubs::__AbiRegisterVtl0Callbacks_CodeGenTest__(function_context);
+    return CodeGenTest::AbiDefinitions::__AbiRegisterVtl0Callbacks_CodeGenTest__(function_context);
 }
 

@@ -3,12 +3,10 @@
 
 #pragma once
 #include <VbsEnclaveABI\Shared\VbsEnclaveAbiBase.h>
-#undef max // prevent windows max macro from conflicting with flatbuffers macro
 #include "vbsenclave_flatbuffer_support_generated.h"
 #include <VbsEnclaveABI\Shared\ConversionHelpers.h>
 
-
-namespace DeveloperTypes
+namespace CodeGenTest::DeveloperTypes
 {
 
 struct TestStruct1;
@@ -35,7 +33,7 @@ struct StructWithPointers
     std::unique_ptr<NestedStructWithPointers> nested_struct_ptr {};
 };
 
-struct TestFunc0_args
+struct TestFunc_0_args
 {
     HRESULT m__return_value_ {};
     bool m_arg1 {};
@@ -49,7 +47,7 @@ struct TestFunc0_args
     std::array<std::wstring, 2> m_arg9 {};
 };
 
-struct TestFunc1_args
+struct TestFunc_1_args
 {
     HRESULT m__return_value_ {};
     bool m_arg1 {};
@@ -70,64 +68,63 @@ namespace VbsEnclaveABI::Shared::Converters
 {
 
 template <>
-struct StructMetadata<DeveloperTypes::TestStruct1>
+struct StructMetadata<CodeGenTest::DeveloperTypes::TestStruct1>
 {
-    static constexpr auto members = std::make_tuple(&DeveloperTypes::TestStruct1::int64_val,&DeveloperTypes::TestStruct1::uint64_val,&DeveloperTypes::TestStruct1::array1);
+    static constexpr auto members = std::make_tuple(&CodeGenTest::DeveloperTypes::TestStruct1::int64_val,&CodeGenTest::DeveloperTypes::TestStruct1::uint64_val,&CodeGenTest::DeveloperTypes::TestStruct1::array1);
 };
 
 template <>
-struct StructMetadata<FlatbuffersDevTypes::TestStruct1T>
+struct StructMetadata<CodeGenTest::FlatbuffersDevTypes::TestStruct1T>
 {
-    static constexpr auto members = std::make_tuple(&FlatbuffersDevTypes::TestStruct1T::int64_val,&FlatbuffersDevTypes::TestStruct1T::uint64_val,&FlatbuffersDevTypes::TestStruct1T::array1);
+    static constexpr auto members = std::make_tuple(&CodeGenTest::FlatbuffersDevTypes::TestStruct1T::int64_val,&CodeGenTest::FlatbuffersDevTypes::TestStruct1T::uint64_val,&CodeGenTest::FlatbuffersDevTypes::TestStruct1T::array1);
 };
 
 template <>
-struct StructMetadata<DeveloperTypes::NestedStructWithPointers>
+struct StructMetadata<CodeGenTest::DeveloperTypes::NestedStructWithPointers>
 {
-    static constexpr auto members = std::make_tuple(&DeveloperTypes::NestedStructWithPointers::int32_ptr,&DeveloperTypes::NestedStructWithPointers::struct_ptr);
+    static constexpr auto members = std::make_tuple(&CodeGenTest::DeveloperTypes::NestedStructWithPointers::int32_ptr,&CodeGenTest::DeveloperTypes::NestedStructWithPointers::struct_ptr);
 };
 
 template <>
-struct StructMetadata<FlatbuffersDevTypes::NestedStructWithPointersT>
+struct StructMetadata<CodeGenTest::FlatbuffersDevTypes::NestedStructWithPointersT>
 {
-    static constexpr auto members = std::make_tuple(&FlatbuffersDevTypes::NestedStructWithPointersT::int32_ptr,&FlatbuffersDevTypes::NestedStructWithPointersT::struct_ptr);
+    static constexpr auto members = std::make_tuple(&CodeGenTest::FlatbuffersDevTypes::NestedStructWithPointersT::int32_ptr,&CodeGenTest::FlatbuffersDevTypes::NestedStructWithPointersT::struct_ptr);
 };
 
 template <>
-struct StructMetadata<DeveloperTypes::StructWithPointers>
+struct StructMetadata<CodeGenTest::DeveloperTypes::StructWithPointers>
 {
-    static constexpr auto members = std::make_tuple(&DeveloperTypes::StructWithPointers::nested_struct_ptr);
+    static constexpr auto members = std::make_tuple(&CodeGenTest::DeveloperTypes::StructWithPointers::nested_struct_ptr);
 };
 
 template <>
-struct StructMetadata<FlatbuffersDevTypes::StructWithPointersT>
+struct StructMetadata<CodeGenTest::FlatbuffersDevTypes::StructWithPointersT>
 {
-    static constexpr auto members = std::make_tuple(&FlatbuffersDevTypes::StructWithPointersT::nested_struct_ptr);
+    static constexpr auto members = std::make_tuple(&CodeGenTest::FlatbuffersDevTypes::StructWithPointersT::nested_struct_ptr);
 };
 
 template <>
-struct StructMetadata<DeveloperTypes::TestFunc0_args>
+struct StructMetadata<CodeGenTest::DeveloperTypes::TestFunc_0_args>
 {
-    static constexpr auto members = std::make_tuple(&DeveloperTypes::TestFunc0_args::m__return_value_,&DeveloperTypes::TestFunc0_args::m_arg1,&DeveloperTypes::TestFunc0_args::m_arg2,&DeveloperTypes::TestFunc0_args::m_arg3,&DeveloperTypes::TestFunc0_args::m_arg4,&DeveloperTypes::TestFunc0_args::m_arg5,&DeveloperTypes::TestFunc0_args::m_arg6,&DeveloperTypes::TestFunc0_args::m_arg7,&DeveloperTypes::TestFunc0_args::m_arg8,&DeveloperTypes::TestFunc0_args::m_arg9);
+    static constexpr auto members = std::make_tuple(&CodeGenTest::DeveloperTypes::TestFunc_0_args::m__return_value_,&CodeGenTest::DeveloperTypes::TestFunc_0_args::m_arg1,&CodeGenTest::DeveloperTypes::TestFunc_0_args::m_arg2,&CodeGenTest::DeveloperTypes::TestFunc_0_args::m_arg3,&CodeGenTest::DeveloperTypes::TestFunc_0_args::m_arg4,&CodeGenTest::DeveloperTypes::TestFunc_0_args::m_arg5,&CodeGenTest::DeveloperTypes::TestFunc_0_args::m_arg6,&CodeGenTest::DeveloperTypes::TestFunc_0_args::m_arg7,&CodeGenTest::DeveloperTypes::TestFunc_0_args::m_arg8,&CodeGenTest::DeveloperTypes::TestFunc_0_args::m_arg9);
 };
 
 template <>
-struct StructMetadata<FlatbuffersDevTypes::TestFunc0_argsT>
+struct StructMetadata<CodeGenTest::FlatbuffersDevTypes::TestFunc_0_argsT>
 {
-    static constexpr auto members = std::make_tuple(&FlatbuffersDevTypes::TestFunc0_argsT::m__return_value_,&FlatbuffersDevTypes::TestFunc0_argsT::m_arg1,&FlatbuffersDevTypes::TestFunc0_argsT::m_arg2,&FlatbuffersDevTypes::TestFunc0_argsT::m_arg3,&FlatbuffersDevTypes::TestFunc0_argsT::m_arg4,&FlatbuffersDevTypes::TestFunc0_argsT::m_arg5,&FlatbuffersDevTypes::TestFunc0_argsT::m_arg6,&FlatbuffersDevTypes::TestFunc0_argsT::m_arg7,&FlatbuffersDevTypes::TestFunc0_argsT::m_arg8,&FlatbuffersDevTypes::TestFunc0_argsT::m_arg9);
+    static constexpr auto members = std::make_tuple(&CodeGenTest::FlatbuffersDevTypes::TestFunc_0_argsT::m__return_value_,&CodeGenTest::FlatbuffersDevTypes::TestFunc_0_argsT::m_arg1,&CodeGenTest::FlatbuffersDevTypes::TestFunc_0_argsT::m_arg2,&CodeGenTest::FlatbuffersDevTypes::TestFunc_0_argsT::m_arg3,&CodeGenTest::FlatbuffersDevTypes::TestFunc_0_argsT::m_arg4,&CodeGenTest::FlatbuffersDevTypes::TestFunc_0_argsT::m_arg5,&CodeGenTest::FlatbuffersDevTypes::TestFunc_0_argsT::m_arg6,&CodeGenTest::FlatbuffersDevTypes::TestFunc_0_argsT::m_arg7,&CodeGenTest::FlatbuffersDevTypes::TestFunc_0_argsT::m_arg8,&CodeGenTest::FlatbuffersDevTypes::TestFunc_0_argsT::m_arg9);
 };
 
 template <>
-struct StructMetadata<DeveloperTypes::TestFunc1_args>
+struct StructMetadata<CodeGenTest::DeveloperTypes::TestFunc_1_args>
 {
-    static constexpr auto members = std::make_tuple(&DeveloperTypes::TestFunc1_args::m__return_value_,&DeveloperTypes::TestFunc1_args::m_arg1,&DeveloperTypes::TestFunc1_args::m_arg2,&DeveloperTypes::TestFunc1_args::m_arg3,&DeveloperTypes::TestFunc1_args::m_arg4,&DeveloperTypes::TestFunc1_args::m_arg5,&DeveloperTypes::TestFunc1_args::m_arg6,&DeveloperTypes::TestFunc1_args::m_arg7,&DeveloperTypes::TestFunc1_args::m_arg8,&DeveloperTypes::TestFunc1_args::m_arg9);
+    static constexpr auto members = std::make_tuple(&CodeGenTest::DeveloperTypes::TestFunc_1_args::m__return_value_,&CodeGenTest::DeveloperTypes::TestFunc_1_args::m_arg1,&CodeGenTest::DeveloperTypes::TestFunc_1_args::m_arg2,&CodeGenTest::DeveloperTypes::TestFunc_1_args::m_arg3,&CodeGenTest::DeveloperTypes::TestFunc_1_args::m_arg4,&CodeGenTest::DeveloperTypes::TestFunc_1_args::m_arg5,&CodeGenTest::DeveloperTypes::TestFunc_1_args::m_arg6,&CodeGenTest::DeveloperTypes::TestFunc_1_args::m_arg7,&CodeGenTest::DeveloperTypes::TestFunc_1_args::m_arg8,&CodeGenTest::DeveloperTypes::TestFunc_1_args::m_arg9);
 };
 
 template <>
-struct StructMetadata<FlatbuffersDevTypes::TestFunc1_argsT>
+struct StructMetadata<CodeGenTest::FlatbuffersDevTypes::TestFunc_1_argsT>
 {
-    static constexpr auto members = std::make_tuple(&FlatbuffersDevTypes::TestFunc1_argsT::m__return_value_,&FlatbuffersDevTypes::TestFunc1_argsT::m_arg1,&FlatbuffersDevTypes::TestFunc1_argsT::m_arg2,&FlatbuffersDevTypes::TestFunc1_argsT::m_arg3,&FlatbuffersDevTypes::TestFunc1_argsT::m_arg4,&FlatbuffersDevTypes::TestFunc1_argsT::m_arg5,&FlatbuffersDevTypes::TestFunc1_argsT::m_arg6,&FlatbuffersDevTypes::TestFunc1_argsT::m_arg7,&FlatbuffersDevTypes::TestFunc1_argsT::m_arg8,&FlatbuffersDevTypes::TestFunc1_argsT::m_arg9);
+    static constexpr auto members = std::make_tuple(&CodeGenTest::FlatbuffersDevTypes::TestFunc_1_argsT::m__return_value_,&CodeGenTest::FlatbuffersDevTypes::TestFunc_1_argsT::m_arg1,&CodeGenTest::FlatbuffersDevTypes::TestFunc_1_argsT::m_arg2,&CodeGenTest::FlatbuffersDevTypes::TestFunc_1_argsT::m_arg3,&CodeGenTest::FlatbuffersDevTypes::TestFunc_1_argsT::m_arg4,&CodeGenTest::FlatbuffersDevTypes::TestFunc_1_argsT::m_arg5,&CodeGenTest::FlatbuffersDevTypes::TestFunc_1_argsT::m_arg6,&CodeGenTest::FlatbuffersDevTypes::TestFunc_1_argsT::m_arg7,&CodeGenTest::FlatbuffersDevTypes::TestFunc_1_argsT::m_arg8,&CodeGenTest::FlatbuffersDevTypes::TestFunc_1_argsT::m_arg9);
 };
 
 }
-
